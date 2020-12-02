@@ -16,8 +16,8 @@ En este repositorio se encuentran todos los trabajos del semestre de la materia 
 * **Modulo 5**
 > Analisis de la Grámatica del compilador (cargada en un archivo) mediante el analizador léxico
 * **Modulo 6**
-> Descripción 
+> Árbol sintactico generado por el analizador sintáctico completo
 * **Modulo 7**
-> Descripción 
+> Analasis semántico 
 * **Modulo 8**
-> Descripción 
+> Analizador semántico
