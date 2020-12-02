@@ -4,7 +4,7 @@ Un compilador es un programa que puede leer un programa en un lenguaje (*lenguaj
 En este repositorio se encuentran todos los trabajos del semestre de la materia Seminario de Soulución de Problemas de Traductores del Lenguaje II, estos trabajos estan dividos en modulos:
 
 * **Modulo 0**
-Descripción 
+\nDescripción 
 * **Modulo 1**
 * **Modulo 2**
 * **Modulo 3**
