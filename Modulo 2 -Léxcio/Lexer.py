@@ -2,7 +2,7 @@ from Errors import *
 from Table import *
 
 """
-**********************************************************************************************************
+                        **********************   TOKEN   **********************
 """
 
 
@@ -69,8 +69,8 @@ class Position:
         return self
 
     def back(self, current_char=None):
-        self.idx += -1
-        self.col += -1
+        self.idx -= 1
+        self.col -= 1
 
         if current_char == '\n':
             self.ln -= 1
@@ -99,10 +99,16 @@ class Lexer:
         self.current_char = self.text[self.pos.idx] if self.pos.idx < len(
             self.text) else None
 
+    def back(self):
+        self.pos.back(self.current_char)
+        self.current_char = self.text[self.pos.idx] if self.pos.idx - \
+            1 > 0 else None
+
     def analyze(self):
         tokens = []
 
         while self.current_char != None:
+            # print(self.current_char, '-> ', self.pos.idx)
             if self.current_char == '\t':
                 self.advance()
             elif self.current_char in DIGITS:
@@ -213,7 +219,7 @@ class Lexer:
         dot_count = 0
         pos_start = self.pos.copy()
 
-        while self.current_char != ' ' and self.current_char != None and (self.current_char in LETTERS or dot_count <= 1):
+        while self.current_char not in DELIMITERS and self.current_char != None and (self.current_char in LETTERS or dot_count <= 1):
             if dot_count == 0:
                 if self.current_char in LETTERS:
                     word += self.current_char
@@ -229,6 +235,7 @@ class Lexer:
         elif word.endswith('.h'):
             return Token(LIBRARY, word, pos_start, self.pos)
         else:
+            # self.back()
             return Token(IDENTIFIER, word, pos_start, self.pos)
 
     def make_equality(self):
@@ -238,11 +245,13 @@ class Lexer:
             self.advance()
             if self.current_char != None and self.current_char == '=':
                 return Token(TT_EQUALITY, '==', pos_start, self.pos)
+            self.back()
             return Token(ASING, '=', pos_start, self.pos)
         else:
             self.advance()
             if self.current_char != None and self.current_char == '=':
                 return Token(TT_EQUALITY, '!=', pos_start, self.pos)
+            self.back()
             return Token(TT_NEGATION, '!', pos_start, self.pos)
 
     def make_logical_operator(self):
@@ -266,17 +275,13 @@ class Lexer:
             self.advance()
             if self.current_char != None and self.current_char == '=':
                 return Token(TT_RELATIONAL, '<=', pos_start, self.pos)
-            return Token(TT_LESSTHAN, '<', pos_start, self.pos)
+            return Token(TT_RELATIONAL, '<', pos_start, self.pos)
         else:
             self.advance()
             if self.current_char != None and self.current_char == '=':
                 return Token(TT_RELATIONAL, '>=', pos_start, self.pos)
-            return Token(TT_GREATERTHAN, '>', pos_start, self.pos)
+            return Token(TT_RELATIONAL, '>', pos_start, self.pos)
 
-
-"""
-**********************************************************************************************************
-"""
 
 """
 **********************************************************************************************************

@@ -19,13 +19,6 @@ def select_file():
 if __name__ == '__main__':
 
     while True:
-        # file = select_file()
-        # if file == None:
-        #     print('Error al abrir el archivo')
-        #     break
-
-        # text = open(file, 'r').read()
-        # print(text)
         text = input('shell > ')
         lexer = Lexer('<stdin>', text)
         tokens, error = lexer.analyze()
@@ -34,7 +27,6 @@ if __name__ == '__main__':
         if error:
             print(error.as_string())
         else:
-            # print(tokens)
             print(tokens)
 
         os.system("pause")

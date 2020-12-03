@@ -1,5 +1,5 @@
 """
-                        **********************   INVALID CHARACTER ERROR   **********************
+                        **********************   ERRORS   **********************
 """
 # La clase base representativa de un Error
 
@@ -39,6 +39,8 @@ class IllegalVariableError(Error):
 
     def __init__(self, pos_start, pos_end, details=''):
         super().__init__(pos_start, pos_end, 'Invalid Variable ', details)
+
+# Señala donde está el error
 
 
 def string_with_arrows(text, pos_start, pos_end):

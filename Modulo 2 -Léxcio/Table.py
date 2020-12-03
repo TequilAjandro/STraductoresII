@@ -4,14 +4,15 @@
 
 DIGITS = '0123456789'
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWYXZabcdefghijklmnopqrstuvwxyz'
-ASING = '='
+ASING = 'ASSIGNMENT'
 IDENTIFIER = 'ID'
 DIRECTIVE = '#'
 LIBRARY = 'LIBRARY'
+DELIMITERS = [' ', ',', ';']
 KEYWORD = ['return', 'int', 'float', 'string', 'char', 'stack', 'list', 'queue', 'tuple',
            'sort', 'cout', 'printf', 'scanf', 'include', 'void', 'public', 'private', 'class',
            'null', 'scanf_s', 'array', 'vector', 'define', 'extern', 'for', 'while', 'if', 'else', 'switch',
-           'case', 'default', 'do', 'continue', 'getchar', 'cout', 'cin', 'gets']
+           'case', 'default', 'do', 'continue', 'getchar', 'cout', 'cin', 'gets', 'true', 'false']
 
 TT_KEYWORD = 'KEYWORD'
 TT_INT = 'INT'
